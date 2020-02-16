@@ -1,16 +1,18 @@
 package controller;
 
 import dto.SpecialityDto;
+import mapper.SpecialityMapper;
+import repository.repoImpl.SpecialityRepositoryImpl;
 import service.SpecialityService;
 
 import java.util.List;
 
 public class SpecialityController {
     private static SpecialityController specialityController;
-    private SpecialityService specialityService = new SpecialityService();
+    private SpecialityService specialityService;
 
     private SpecialityController(){
-
+        specialityService = new SpecialityService(new SpecialityRepositoryImpl(), new SpecialityMapper());
     }
 
     public static SpecialityController getSpecialityController(){

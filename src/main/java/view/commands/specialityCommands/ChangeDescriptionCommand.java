@@ -25,7 +25,5 @@ public class ChangeDescriptionCommand implements Command {
         if (specialityDto.getErrorMessage() != null) {
             System.out.println(specialityDto.getErrorMessage());
         }
-
-
     }
 }

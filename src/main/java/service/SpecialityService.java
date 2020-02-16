@@ -4,7 +4,7 @@ import dto.SpecialityDto;
 import mapper.SpecialityMapper;
 import model.Specialty;
 import repository.SpecialityRepository;
-import repository.repoImpl.SpecialityRepositoryImpl;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,8 +13,13 @@ public class SpecialityService {
     private final static int MINIMUM_NAME_SIZE = 3;
     private final static int MAXIMUM_NAME_SIZE = 30;
     private final static int MAXIMUM_DESCRIPTION_SIZE = 50;
-    private SpecialityRepository specialityRepository = new SpecialityRepositoryImpl();
-    private SpecialityMapper specialityMapper = new SpecialityMapper();
+    private SpecialityRepository specialityRepository;
+    private SpecialityMapper specialityMapper;
+
+    public SpecialityService(SpecialityRepository specialityRepository, SpecialityMapper specialityMapper) {
+        this.specialityRepository = specialityRepository;
+        this.specialityMapper = specialityMapper;
+    }
 
     public SpecialityDto createSpeciality(String specialityName) {
         SpecialityDto specialityDto;

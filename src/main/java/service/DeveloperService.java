@@ -8,9 +8,7 @@ import model.Specialty;
 import repository.DeveloperRepository;
 import repository.SkillRepository;
 import repository.SpecialityRepository;
-import repository.repoImpl.DeveloperRepositoryImpl;
-import repository.repoImpl.SkillRepositoryImpl;
-import repository.repoImpl.SpecialityRepositoryImpl;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,12 +16,23 @@ import java.util.stream.Collectors;
 public class DeveloperService {
     private final static int MINIMUM_NAME_SIZE = 3;
     private final static int MAXIMUM_NAME_SIZE = 30;
-    private DeveloperRepository developerRepository = new DeveloperRepositoryImpl();
-    private DeveloperMapper developerMapper = new DeveloperMapper();
-    private SpecialityService specialityService = new SpecialityService();
-    private SpecialityRepository specialityRepository = new SpecialityRepositoryImpl();
-    private SkillService skillService = new SkillService();
-    private SkillRepository skillRepository = new SkillRepositoryImpl();
+    private DeveloperRepository developerRepository;
+    private DeveloperMapper developerMapper;
+    private SpecialityService specialityService;
+    private SpecialityRepository specialityRepository;
+    private SkillService skillService;
+    private SkillRepository skillRepository;
+
+    public DeveloperService(DeveloperRepository developerRepository, DeveloperMapper developerMapper,
+                            SpecialityService specialityService, SpecialityRepository specialityRepository,
+                            SkillService skillService, SkillRepository skillRepository) {
+        this.developerRepository = developerRepository;
+        this.developerMapper = developerMapper;
+        this.specialityService = specialityService;
+        this.specialityRepository = specialityRepository;
+        this.skillService = skillService;
+        this.skillRepository = skillRepository;
+    }
 
     public DeveloperDto createDeveloper(String firstName, String lastName) {
         DeveloperDto developerDto;

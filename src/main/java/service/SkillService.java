@@ -4,7 +4,6 @@ import dto.SkillDto;
 import mapper.SkillMapper;
 import model.Skill;
 import repository.SkillRepository;
-import repository.repoImpl.SkillRepositoryImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,8 +11,13 @@ import java.util.stream.Collectors;
 public class SkillService {
     private final static int MINIMUM_NAME_SIZE = 3;
     private final static int MAXIMUM_NAME_SIZE = 30;
-    private SkillRepository skillRepository = new SkillRepositoryImpl();
-    private SkillMapper skillMapper = new SkillMapper();
+    private SkillRepository skillRepository;
+    private SkillMapper skillMapper;
+
+    public SkillService(SkillMapper skillMapper, SkillRepository skillRepository) {
+        this.skillMapper = skillMapper;
+        this.skillRepository = skillRepository;
+    }
 
     public SkillDto createSkill(String skillName) {
         SkillDto skillDto;
@@ -77,6 +81,9 @@ public class SkillService {
         }
         return false;
     }
+
+
+
 
 
 }
